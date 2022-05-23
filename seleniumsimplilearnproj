@@ -1,0 +1,39 @@
+package seleniumfirstclass1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+//import org.openqa.selenium.firefox.FirefoxDriverService;
+
+public class seleniumfirstscript1 {
+	  WebDriver driver;
+			 
+	public  void LaunchBrowser() {
+		
+		System.setProperty("webdriver.gecko.driver","C:\\Users\\nsrir\\Downloads\\geckodriver-v0.31.0-win64");
+		driver=new FirefoxDriver();
+		driver.get("https://www.simplilearn.com");
+	}
+	public  void search() throws InterruptedException
+	{
+     driver.findElement(By.id("header_srch")).sendKeys("Selenium");
+     Thread.sleep(3000);
+     driver.findElement(By.xpath("//span[@class'search_icon']")).click();
+     Thread.sleep(3000);
+     driver.findElement(By.xpath("//h2[text()='Selenium 3.0 Training']")).click();
+     System.out.println("the page title:"+driver.getTitle());
+	}
+	public void closebrowser()
+	{
+		driver.quit();
+	}
+public static void main(String[] args) throws InterruptedException {
+	seleniumfirstscript1 obj=new seleniumfirstscript1();
+	obj.LaunchBrowser();
+	obj.search();
+	obj.closebrowser();
+	
+	}
+	
+};
+
